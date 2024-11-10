@@ -3,7 +3,7 @@ const mongodb = require('../utils/mongodb');
 var ObjectId = require('mongodb').ObjectId;
 const path = require('path');
 const axios = require('axios');
-const userController = require('./user');
+const userService = require('../services/user');
 
 const getIndex = async (req, res) => {
   res.sendFile(path.join(__dirname, '../static/index.html'));
@@ -26,7 +26,7 @@ const oAuthCallback = async ({ query: { code } }, res) => {
     .post('https://github.com/login/oauth/access_token', body, opts)
     .then((_res) => _res.data.access_token)
     .then(async (token) => {
-      var userUpsertResponse = await userController.createOrUpdate({ params: { access_token: token}});
+      var userUpsertResponse = await userService.createOrUpdate({ params: { access_token: token}});
       console.log(userUpsertResponse);
       res.redirect(`/dashboard?userId=${userUpsertResponse.githubId}`);
     })
