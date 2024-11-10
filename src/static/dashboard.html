@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Warranty Wise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #080838;
+            color: #ffffff;
+            margin: 0;
+        }
+        .navbar {
+            background-color: #191970;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        .navbar .logout-button {
+            background-color: #393F86;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .navbar .logout-button:hover {
+            background-color: #2a2c60;
+        }
+        .content {
+            padding: 20px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-input {
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid #393F86;
+            border-radius: 5px;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #393F86;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #393F86;
+        }
+        tr:nth-child(even) {
+            background-color: #191970;
+        }
+        tr:nth-child(odd) {
+            background-color: #080838;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Warranty Wise</h1>
+        <button class="logout-button">Logout</button>
+    </div>
+    <div class="content">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search Warranties...">
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Purchase Date</th>
+                        <th>Warranty Period</th>
+                        <th>Expiration Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Add your table rows here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="../controllers/warranty.js"></script>
+    <script>
+        window.onload = function() {
+            var rows = getAll();
+            consol.log(rows);
+        }
+        // Add your search functionality here
+        document.querySelector('.search-input').addEventListener('input', function(e) {
+            const searchText = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('table tbody tr');
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const matches = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(searchText));
+                row.style.display = matches ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

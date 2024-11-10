@@ -1,0 +1,190 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Warranties API",
+    "description": "Api used for saving, updated, reading, and deleting warranties.",
+    "version": "1.0.0"
+  },
+  "host": "warrantywise.onrender.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/warranties/": {
+      "get": {
+        "tags": [
+          "Warranties"
+        ],
+        "summary": "Get All Warranties",
+        "description": "Gets all warranties in the collection. This endpoint is NOT paginated.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Warranties"
+        ],
+        "summary": "Create a new Warranty",
+        "description": "Creates a new warranty in the warranties collection.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelNumber": {
+                  "example": "any"
+                },
+                "purchaseDate": {
+                  "example": "any"
+                },
+                "company": {
+                  "example": "any"
+                },
+                "details": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "linkToFileClaim": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/warranties/{id}": {
+      "get": {
+        "tags": [
+          "Warranties"
+        ],
+        "summary": "Get Warranty By ID",
+        "description": "Gets a single warranty by the provided ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the warranty to be retrieved."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Warranties"
+        ],
+        "summary": "Update a Warranty by ID",
+        "description": "Updated a warranty in the warranties collection by provided ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the warranty to be updated."
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelNumber": {
+                  "example": "any"
+                },
+                "purchaseDate": {
+                  "example": "any"
+                },
+                "company": {
+                  "example": "any"
+                },
+                "details": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "linkToFileClaim": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Warranties"
+        ],
+        "summary": "Delete a Warranty by ID",
+        "description": "Deletes a warranty from the warranties collection for the provided ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the warranty to be deleted."
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    }
+  }
+}

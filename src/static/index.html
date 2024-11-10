@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Warranty Wise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #080838;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #191970;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .button {
+            background-color: #393F86;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #2a2c60;
+        }
+    </style>
+</head>
+<body>
+    <div class="content unauthorized container">
+        <h1>Welcome to Warranty Wise</h1>
+        <a href="/auth" class="button">Sign In With GitHub</a>
+        <p class="sign-in-text">to get started</p>
+    </div>
+
+    <div class="content authorized" style="display: none">
+      <div class="top">
+        <img class="img-github" src="github.png" />
+        <h1><span class="party-popper">🎉</span><br />Awesome!<br />You're authorized 🔒</h1>
+      </div>
+    </div>
+    <script>
+      const URL_PARAMS = new URLSearchParams(window.location.search);
+      const TOKEN = URL_PARAMS.get('token');
+
+      // Show an element
+      const show = (selector) => {
+        document.querySelector(selector).style.display = 'block';
+      };
+
+      // Hide an element
+      const hide = (selector) => {
+        document.querySelector(selector).style.display = 'none';
+      };
+
+      if (TOKEN) {
+        hide('.content.unauthorized');
+        show('.content.authorized');
+      }
+    </script>
+</body>
+</html>

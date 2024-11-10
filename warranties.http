@@ -1,0 +1,89 @@
+// Localhost Requests
+### Get All
+GET http://localhost:3000/warranties HTTP/1.1
+
+### Get By ID
+
+GET http://localhost:3000/warranties/671489ea1ac97c3157c51cd6 HTTP/1.1
+
+
+### Create warranty
+POST http://localhost:3000/warranties HTTP/1.1
+content-type: application/json
+
+{
+    "modelNumber": "123MODEL",
+    "purchaseDate": "2024/10/19",
+    "durationInYears": 5,
+    "company": "WarrantyWise",
+    "details": "Full coverage for any reason",
+    "email": "john.doe@email.com",
+    "phone": "1234567890",
+    "linkToFileClaim": "https://www.file.claim.com"
+}
+
+### Update warranty
+PUT http://localhost:3000/warranties/6714889857cb8ca0c76b3aa2 HTTP/1.1
+content-type: application/json
+
+{
+    "modelNumber": "123MODELT",
+    "purchaseDate": "2024/10/19",
+    "durationInYears": 5,
+    "company": "WarrantyWise",
+    "details": "Full coverage for any reason",
+    "email": "john.doe@email.com",
+    "phone": "1234567890",
+    "linkToFileClaim": "file.claim.com"
+}
+
+
+### Delete warranty
+DELETE http://localhost:3000/warranties/67148ab01ac97c3157c51cd7 HTTP/1.1
+
+
+###
+// -------------------
+// -------------------
+// -------------------
+// Render Requests
+### Get All
+
+GET https://warrantywise.onrender.com/warranties HTTP/1.1
+
+### Get By ID
+
+GET https://warrantywise.onrender.com/warranties/671d6a1de2bf4e63d7f1ef33 HTTP/1.1
+
+### Create warranty
+POST https://warrantywise.onrender.com/warranties HTTP/1.1
+content-type: application/json
+
+{
+    "modelNumber": "123MODEL",
+    "purchaseDate": "2024/10/19546",
+    "durationInYears": 5,
+    "company": "WarrantyWise",
+    "details": "Full coverage for any reason",
+    "email": "john.doe@email.com",
+    "phone": "1234567890",
+    "linkToFileClaim": "file.claim.com$#!%!#%"
+}
+### Update warranty
+PUT https://warrantywise.onrender.com/warranties/671d6a1de2bf4e63d7f1ef33 HTTP/1.1
+content-type: application/json
+
+{
+    "modelNumber": "123MODELT",
+    "purchaseDate": "2024/10/19",
+    "durationInYears": 5,
+    "company": "WarrantyWise",
+    "details": "Full coverage for any reason",
+    "email": "john.doe@email.com",
+    "phone": "1234567890",
+    "linkToFileClaim": "file.claim.com"
+}
+
+### Delete warranty
+DELETE https://warrantywise.onrender.com/warranties/671a3aee31dc99f8d25d8016 HTTP/1.1
+
