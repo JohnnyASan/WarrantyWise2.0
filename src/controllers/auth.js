@@ -26,9 +26,8 @@ const oAuthCallback = async ({ query: { code } }, res) => {
     .post('https://github.com/login/oauth/access_token', body, opts)
     .then((_res) => _res.data.access_token)
     .then(async (token) => {
+      console.log(`My Token: ${token}`);
       var userUpsertResponse = await userService.createOrUpdate(token);
-      console.log(userUpsertResponse);
-      res.redirect(`/dashboard?userId=${userUpsertResponse.githubId}`);
     })
     .catch((err) => res.status(500).json({ err: err.message }));
 };

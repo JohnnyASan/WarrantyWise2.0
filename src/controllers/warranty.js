@@ -19,9 +19,6 @@ const getAll = async (req, res) => {
 
 };
 
-const getDashboard = async (req, res) => {
-    res.sendFile(path.join(__dirname, '../static/dashboard.html'));
-  };
 
 const getAllByUserId = async (req, res) => {
     // #swagger.summary = 'Get All Warranties for a given user.'
@@ -191,7 +188,6 @@ const deleteRecord = async (req, res) => {
 }
 
 module.exports = {
-    getDashboard,
     getAll,
     getAllByUserId,
     getById,

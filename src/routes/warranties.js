@@ -8,6 +8,5 @@ warrantiesRouter.get('/:id', warrantiesController.getById);
 warrantiesRouter.post('/', warrantyValidationRules(), validate, warrantiesController.postRecord);
 warrantiesRouter.put('/:id', warrantyValidationRules(), validate, warrantiesController.putRecord);
 warrantiesRouter.delete('/:id', warrantiesController.deleteRecord);
-warrantiesRouter.get('/dashboard', warrantiesController.getDashboard);
 
 module.exports = warrantiesRouter;
