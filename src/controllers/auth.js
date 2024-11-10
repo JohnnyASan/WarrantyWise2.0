@@ -27,8 +27,8 @@ const oAuthCallback = async ({ query: { code } }, res) => {
     .then((_res) => _res.data.access_token)
     .then(async (token) => {
       var userUpsertResponse = await userController.createOrUpdate({ params: { access_token: token}});
-
-      res.redirect(`/dashboard?userId=${userUpsertResponse.data.githubId}`);
+      console.log(userUpsertResponse);
+      res.redirect(`/dashboard?userId=${userUpsertResponse.githubId}`);
     })
     .catch((err) => res.status(500).json({ err: err.message }));
 };

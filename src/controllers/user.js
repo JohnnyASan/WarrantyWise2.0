@@ -41,7 +41,7 @@ const createOrUpdate = async (req, res) => {
                 response = await mongodb.getDb().db('warrantywise').collection('users').insertOne(user);
             } 
         
-            res.status(201).json(response);
+            res.status(201).json(user);
         });
     }
     catch {
