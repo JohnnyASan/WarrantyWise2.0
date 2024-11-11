@@ -2,10 +2,10 @@
   "name": "warrantywise",
   "version": "1.0.0",
   "description": "This is an API to store warranties for products so that you don't misplace those things and end up spending money you don't need to.",
-  "main": "server.js",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "tsx server.ts",
     "swagger": "node ./src/docs/swagger.js"
   },
   "keywords": [],
@@ -14,16 +14,15 @@
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.0",
     "@nestjs/passport": "^10.0.3",
-    "axios": "^1.7.7",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1",
+    "@types/axios": "^0.14.4",
+    "@types/dotenv": "^8.2.3",
+    "@types/express": "^5.0.0",
+    "@types/express-validator": "^3.0.2",
+    "@types/mongoose": "^5.11.97",
+    "@types/swagger-ui-express": "^4.1.7",
     "express-async-errors": "^3.1.1",
-    "express-validator": "^7.2.0",
-    "googleapis": "^105.0.0",
     "http-status-codes": "^2.3.0",
-    "mongodb": "^6.9.0",
-    "passport": "^0.7.0",
-    "swagger-ui-express": "^5.0.1"
+    "tsx": "^4.19.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.7",
