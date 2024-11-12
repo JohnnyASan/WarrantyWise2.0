@@ -4,9 +4,8 @@ import { Strategy as GitHubStrategy } from 'passport-github2';
 import passport from 'passport';
 import dotenv from 'dotenv';
 import GitHubProfile from '../models/gitHubProfile';
+import eSeshD from '../types/express-session';
 dotenv.config();
-
-
 
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_OAUTH_CLIENT_ID ?? '',
@@ -44,7 +43,7 @@ authRouter.get(
     '/callback', 
     passport.authenticate('github', { failureRedirect: '/auth/github/error'}),
     function (req, res) {
-        res.redirect('/auth/github/success');
+        res.redirect('/auth/success');
     }
 );
 authRouter.get('/success', async (req: Request, res: Response) => {
