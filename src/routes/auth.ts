@@ -3,22 +3,38 @@ import User from '../models/user';
 import { Strategy as GitHubStrategy } from 'passport-github2';
 import passport from 'passport';
 import dotenv from 'dotenv';
+import GitHubProfile from '../models/gitHubProfile';
 dotenv.config();
 
+
+
 passport.use(new GitHubStrategy({
-  clientID: process.env.GITHUB_OAUTH_CLIENT_ID ?? '',
-  clientSecret: process.env.GITHUB_OAUTH_SECRET ?? '',
-  callbackURL: process.env.GITHUB_CALLBACK_URL ?? ''
-},
-function(accessToken, refreshToken, profile, done) {
-  User.findByIdAndUpdate(
-    { githubId: profile.id }, 
-    function (err, user) {
-      return done(err, user);
+    clientID: process.env.GITHUB_OAUTH_CLIENT_ID ?? '',
+    clientSecret: process.env.GITHUB_OAUTH_SECRET ?? '',
+    callbackURL: process.env.GITHUB_CALLBACK_URL ?? ''
     },
-    { upsert: true }
-  );
-}
+    async (accessToken: string, refreshToken: string, profile: GitHubProfile, callback: any) => {
+        let user = await User.findOne({ githubId: profile.id });
+        if (!user) {
+            console.log('Creating new user from GitHub OAuth in DB...');
+            const newUser = new User({
+                username: profile.login,
+                email: profile.email,
+                profileImage: profile.avatar_url,
+                githubId: profile.id,
+                githubToken: accessToken,
+                createdAt: Date.now(),
+                updatedAt: Date.now()
+            });
+            await newUser.save();
+
+            return callback(null, profile);
+        }
+        else {
+            console.log('Github user already exists in DB...');
+            return callback(null, profile);
+        }
+    }
 ));
 
 const authRouter = express.Router();
