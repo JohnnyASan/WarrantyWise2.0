@@ -14,15 +14,11 @@ passport.use(new GitHubStrategy({
     async (accessToken: string, refreshToken: string, profile: any, callback: any) => {
         console.log("PROFILE_LOG: \n");
         console.log(profile)
-        console.log(`ID: ${profile._json.id}`);
-        console.log(`username: ${profile._json.login}`);
-        console.log(`email: ${profile._json.email}`);
         let user = await User.findOne({ githubId: profile.id });
         if (!user) {
             console.log('Creating new user from GitHub OAuth in DB...');
             const newUser = new User({
                 username: profile._json.login,
-                email: profile._json.email,
                 profileImage: profile._json.avatar_url,
                 githubId: profile.id,
                 githubToken: accessToken,
