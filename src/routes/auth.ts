@@ -3,7 +3,6 @@ import User from '../models/user';
 import { Strategy as GitHubStrategy } from 'passport-github2';
 import passport from 'passport';
 import dotenv from 'dotenv';
-import GitHubProfile from '../models/gitHubProfile';
 import eSeshD from '../types/express-session';
 dotenv.config();
 
@@ -13,7 +12,9 @@ passport.use(new GitHubStrategy({
     callbackURL: process.env.GITHUB_CALLBACK_URL ?? ''
     },
     async (accessToken: string, refreshToken: string, profile: any, callback: any) => {
-        console.log(profile);
+        console.log(`ID: ${profile.id}`);
+        console.log(`username: ${profile.login}`);
+        console.log(`email: ${profile.email}`);
         let user = await User.findOne({ githubId: profile.id });
         if (!user) {
             console.log('Creating new user from GitHub OAuth in DB...');
