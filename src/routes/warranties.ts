@@ -6,8 +6,8 @@ const warrantiesRouter: Router = Router();
 
 warrantiesRouter.get('/', getAll);
 warrantiesRouter.get('/:id', getById);
-warrantiesRouter.post('/', warrantyValidationRules(), postRecord);
-warrantiesRouter.put('/:id', warrantyValidationRules(), putRecord);
+warrantiesRouter.post('/', warrantyValidationRules(), validate, postRecord);
+warrantiesRouter.put('/:id', warrantyValidationRules(), validate, putRecord);
 warrantiesRouter.delete('/:id', deleteRecord);
 
 export default warrantiesRouter;

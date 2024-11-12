@@ -13,7 +13,7 @@ content-type: application/json
 
 {
     "modelNumber": "123MODEL",
-    "purchaseDate": "2024/10/19",
+    "purchaseDate": "2024/10/19fd",
     "expiration": "2025/10/19",
     "company": "WarrantyWise",
     "details": "Full coverage for any reason",

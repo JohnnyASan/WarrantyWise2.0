@@ -23,15 +23,15 @@ const warrantyValidationRules = () => {
   ];
 };
 
-const validate = (req: Request, res: Response, next: NextFunction) => {
+const validate = (req: Request, res: Response, next: NextFunction): void => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
-    return next();
+    next();
   }
   const extractedErrors: { [key: string]: string }[] = [];
   errors.array().map(err => extractedErrors.push({ [err.type]: `${err.type} ${err.msg}` }));
 
-  return res.status(422).json({
+  res.status(422).json({
     errors: extractedErrors,
   });
 };
