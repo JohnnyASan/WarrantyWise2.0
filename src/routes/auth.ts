@@ -11,19 +11,20 @@ passport.use(new GitHubStrategy({
     clientSecret: process.env.GITHUB_OAUTH_SECRET ?? '',
     callbackURL: process.env.GITHUB_CALLBACK_URL ?? ''
     },
-    async (accessToken: string, refreshToken: string, profile: JSON, callback: any) => {
+    async (accessToken: string, refreshToken: string, profile: any, callback: any) => {
         console.log("PROFILE_LOG: \n");
-        console.log(profile);
-        console.log(`ID: ${profile.parse("id")}`);
-        console.log(`username: ${profile.parse("login")}`);
-        let user = await User.findOne({ githubId: profile["id"] });
+        console.log(profile)
+        console.log(`ID: ${profile._json.id}`);
+        console.log(`username: ${profile._json.login}`);
+        console.log(`email: ${profile._json.email}`);
+        let user = await User.findOne({ githubId: profile.id });
         if (!user) {
             console.log('Creating new user from GitHub OAuth in DB...');
             const newUser = new User({
-                username: profile.parse("login"),
-                email: profile.parse("email"),
-                profileImage: profile.parse("avatar_url"),
-                githubId: profile.parse("id"),
+                username: profile._json.login,
+                email: profile._json.email,
+                profileImage: profile._json.avatar_url,
+                githubId: profile.id,
                 githubToken: accessToken,
                 createdAt: Date.now(),
                 updatedAt: Date.now()
