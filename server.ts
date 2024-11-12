@@ -32,7 +32,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-app.use(passport.session());
+// app.use(passport.session());
 
 app.use(function handleValidationError(err: any, req: Request, res: Response, next: NextFunction) {
   if (err instanceof ValidationError) {
