@@ -12,6 +12,7 @@ passport.use(new GitHubStrategy({
     callbackURL: process.env.GITHUB_CALLBACK_URL ?? ''
     },
     async (accessToken: string, refreshToken: string, profile: any, callback: any) => {
+        console.log("PROFILE_LOG: \n" + profile);
         console.log(`ID: ${profile.id}`);
         console.log(`username: ${profile.login}`);
         console.log(`email: ${profile.email}`);
