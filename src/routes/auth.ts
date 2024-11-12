@@ -13,7 +13,7 @@ passport.use(new GitHubStrategy({
     clientSecret: process.env.GITHUB_OAUTH_SECRET ?? '',
     callbackURL: process.env.GITHUB_CALLBACK_URL ?? ''
     },
-    async (accessToken: string, refreshToken: string, profile: GitHubProfile, callback: any) => {
+    async (accessToken: string, refreshToken: string, profile: any, callback: any) => {
         let user = await User.findOne({ githubId: profile.id });
         if (!user) {
             console.log('Creating new user from GitHub OAuth in DB...');
