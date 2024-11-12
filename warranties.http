@@ -13,12 +13,13 @@ content-type: application/json
 
 {
     "modelNumber": "123MODEL",
-    "purchaseDate": "2024/10/19fd",
+    "purchaseDate": "2024/10/19",
     "expiration": "2025/10/19",
     "company": "WarrantyWise",
     "details": "Full coverage for any reason",
     "email": "john.doe@email.com",
-    "phone": "1234567890",
+    "phone": "12345678901",
+    "githubId": "1",
     "linkToFileClaim": "https://www.file.claim.com"
 }
 
@@ -34,6 +35,7 @@ content-type: application/json
     "details": "Full coverage for any reason",
     "email": "john.doe@email.com",
     "phone": "1234567890",
+    "githubId": "1",
     "linkToFileClaim": "file.claim.com"
 }
 
@@ -67,6 +69,7 @@ content-type: application/json
     "details": "Full coverage for any reason",
     "email": "john.doe@email.com",
     "phone": "1234567890",
+    "githubId": "1",
     "linkToFileClaim": "file.claim.com$#!%!#%"
 }
 ### Update warranty
@@ -81,6 +84,7 @@ content-type: application/json
     "details": "Full coverage for any reason",
     "email": "john.doe@email.com",
     "phone": "1234567890",
+    "githubId": "1",
     "linkToFileClaim": "file.claim.com"
 }
 

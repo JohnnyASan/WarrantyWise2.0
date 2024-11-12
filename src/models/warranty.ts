@@ -9,6 +9,7 @@ export interface IWarranty extends Document {
   email: string;
   phone: string;
   linkToFileClaim: string;
+  githubId: string;
 }
 
 const WarrantySchema: Schema = new Schema({
@@ -18,7 +19,8 @@ const WarrantySchema: Schema = new Schema({
     phone: { type: String, required: true },
     purchaseDate: { type: Date, default: Date.now, required: true },
     expiration: { type: Date, required: true },
-    details: { type: String, required: false }
+    details: { type: String, required: false },
+    githubId: { type: String, required: true }
   });
   
   const Warranty = mongoose.model<IWarranty>('Warranties', WarrantySchema);

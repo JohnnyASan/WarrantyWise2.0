@@ -58,12 +58,14 @@ const postRecord = async (req: Request, res: Response): Promise<void> => {
             schema: {
                 modelNumber: '123MODEL',
                 purchaseDate: '2024/10/19',
-                durationInYears: 5,
+                expiration: '2024/10/19',
                 company: 'WarrantyWise',
                 details: 'Full coverage for any reason',
                 email: 'john.doe@email.com',
                 phone: '1234567890',
-                linkToFileClaim: 'file.claim.com'
+                linkToFileClaim: 'file.claim.com',
+                githubId: '123ID'
+
             }
         }
         #swagger.responses[200] = {
@@ -71,12 +73,13 @@ const postRecord = async (req: Request, res: Response): Promise<void> => {
             schema: {
                 modelNumber: '123MODEL',
                 purchaseDate: '2024/10/19',
-                durationInYears: 5,
+                expiration: '2024/10/19',
                 company: 'WarrantyWise',
                 details: 'Full coverage for any reason',
                 email: 'john.doe@email.com',
                 phone: '1234567890',
-                linkToFileClaim: 'file.claim.com'
+                linkToFileClaim: 'file.claim.com',
+                githubId: '123ID'
             }
          } 
     */
@@ -89,7 +92,8 @@ const postRecord = async (req: Request, res: Response): Promise<void> => {
         req.body.expiration, 
         req.body.email, 
         req.body.phone, 
-        req.body.linkToFileClaim);
+        req.body.linkToFileClaim,
+        req.body.githubId);
       
       res.status(201).json(response);
    } catch (error) {
@@ -109,12 +113,13 @@ const putRecord = async (req: Request, res: Response): Promise<void> => {
             schema: {
                 modelNumber: '123MODEL',
                 purchaseDate: '2024/10/19',
-                durationInYears: 5,
+                expiration: '2024/10/19',
                 company: 'WarrantyWise',
                 details: 'Full coverage for any reason',
                 email: 'john.doe@email.com',
                 phone: '1234567890',
-                linkToFileClaim: 'file.claim.com'
+                linkToFileClaim: 'file.claim.com',
+                githubId: '123ID'
             }
         }
         #swagger.responses[200] = {
@@ -122,12 +127,13 @@ const putRecord = async (req: Request, res: Response): Promise<void> => {
             schema: {
                 modelNumber: '123MODEL',
                 purchaseDate: '2024/10/19',
-                durationInYears: 5,
+                expiration: '2024/10/19',
                 company: 'WarrantyWise',
                 details: 'Full coverage for any reason',
                 email: 'john.doe@email.com',
                 phone: '1234567890',
-                linkToFileClaim: 'file.claim.com'
+                linkToFileClaim: 'file.claim.com',
+                githubId: '123ID'
             }
         } 
     */
@@ -141,7 +147,8 @@ const putRecord = async (req: Request, res: Response): Promise<void> => {
             req.body.expiration, 
             req.body.email, 
             req.body.phone, 
-            req.body.linkToFileClaim 
+            req.body.linkToFileClaim,
+            req.body.githubId
         );
 
         res.status(204).send(response);

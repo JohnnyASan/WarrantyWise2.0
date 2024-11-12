@@ -10,7 +10,8 @@ const createNewWarranty = async (
         expiration: Date,
         email: string,
         phone: string,
-        linkToFileClaim: string
+        linkToFileClaim: string,
+        githubId: string
     ) =>  {
     
     // Create new Warranty
@@ -22,7 +23,8 @@ const createNewWarranty = async (
         phone: phone,
         expiration: expiration,
         linkToFileClaim: linkToFileClaim,
-        purchaseDate: purchaseDate
+        purchaseDate: purchaseDate,
+        githubId: githubId
     });
 
     // Save new User Model
@@ -47,7 +49,8 @@ const updateWarrantyById = async (
         expiration: Date,
         email: string,
         phone: string,
-        linkToFileClaim: string
+        linkToFileClaim: string,
+        githubId: string
     ) =>  {
 
 
@@ -55,7 +58,7 @@ const updateWarrantyById = async (
     if (!existingWarranty) throw new NotFoundError("Warranty could not be found.");
 
     let isUpdated = false;
-    existingWarranty.updateOne({ _id: id }, { modelNumber, purchaseDate, company, details, expiration, email, phone, linkToFileClaim })
+    existingWarranty.updateOne({ _id: id }, { modelNumber, purchaseDate, company, details, expiration, email, phone, linkToFileClaim, githubId })
     .then(warranty => {
         console.log('Warranty updated:', warranty);
         isUpdated = true;

@@ -10,6 +10,14 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Enter the token with the `Bearer: ` prefix, e.g. \"Bearer abcde12345\"."
+    }
+  },
   "paths": {
     "/api-docs": {
       "get": {
@@ -47,40 +55,103 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Create a new warranty",
             "schema": {
               "type": "object",
               "properties": {
                 "modelNumber": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "123MODEL"
                 },
                 "purchaseDate": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "2024/10/19"
+                },
+                "expiration": {
+                  "type": "string",
+                  "example": "2024/10/19"
                 },
                 "company": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "WarrantyWise"
                 },
                 "details": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Full coverage for any reason"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "john.doe@email.com"
                 },
                 "phone": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "1234567890"
                 },
                 "linkToFileClaim": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "file.claim.com"
+                },
+                "githubId": {
+                  "type": "string",
+                  "example": "123ID"
                 }
               }
             }
           }
         ],
         "responses": {
+          "200": {
+            "description": "Create a new warranty.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelNumber": {
+                  "type": "string",
+                  "example": "123MODEL"
+                },
+                "purchaseDate": {
+                  "type": "string",
+                  "example": "2024/10/19"
+                },
+                "expiration": {
+                  "type": "string",
+                  "example": "2024/10/19"
+                },
+                "company": {
+                  "type": "string",
+                  "example": "WarrantyWise"
+                },
+                "details": {
+                  "type": "string",
+                  "example": "Full coverage for any reason"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john.doe@email.com"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "1234567890"
+                },
+                "linkToFileClaim": {
+                  "type": "string",
+                  "example": "file.claim.com"
+                },
+                "githubId": {
+                  "type": "string",
+                  "example": "123ID"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
           "201": {
             "description": "Created"
           },
-          "422": {
-            "description": "Unprocessable Entity"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -92,9 +163,6 @@
         ],
         "summary": "Get Warranty By ID",
         "description": "Gets a single warranty by the provided ID.",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "id",
@@ -127,40 +195,100 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Update a warranty",
             "schema": {
               "type": "object",
               "properties": {
                 "modelNumber": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "123MODEL"
                 },
                 "purchaseDate": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "2024/10/19"
+                },
+                "expiration": {
+                  "type": "string",
+                  "example": "2024/10/19"
                 },
                 "company": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "WarrantyWise"
                 },
                 "details": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Full coverage for any reason"
                 },
                 "email": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "john.doe@email.com"
                 },
                 "phone": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "1234567890"
                 },
                 "linkToFileClaim": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "file.claim.com"
+                },
+                "githubId": {
+                  "type": "string",
+                  "example": "123ID"
                 }
               }
             }
           }
         ],
         "responses": {
+          "200": {
+            "description": "Update a warranty.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelNumber": {
+                  "type": "string",
+                  "example": "123MODEL"
+                },
+                "purchaseDate": {
+                  "type": "string",
+                  "example": "2024/10/19"
+                },
+                "expiration": {
+                  "type": "string",
+                  "example": "2024/10/19"
+                },
+                "company": {
+                  "type": "string",
+                  "example": "WarrantyWise"
+                },
+                "details": {
+                  "type": "string",
+                  "example": "Full coverage for any reason"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "john.doe@email.com"
+                },
+                "phone": {
+                  "type": "string",
+                  "example": "1234567890"
+                },
+                "linkToFileClaim": {
+                  "type": "string",
+                  "example": "file.claim.com"
+                },
+                "githubId": {
+                  "type": "string",
+                  "example": "123ID"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
           "204": {
             "description": "No Content"
-          },
-          "422": {
-            "description": "Unprocessable Entity"
           }
         }
       },
@@ -186,17 +314,7 @@
         }
       }
     },
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/auth": {
+    "/auth/": {
       "get": {
         "description": "",
         "responses": {
@@ -206,7 +324,17 @@
         }
       }
     },
-    "/oauth-callback": {
+    "/auth/callback": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/success": {
       "get": {
         "description": "",
         "responses": {
