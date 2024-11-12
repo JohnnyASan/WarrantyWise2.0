@@ -43,7 +43,7 @@ authRouter.get(
     '/callback', 
     passport.authenticate('github', { failureRedirect: '/auth/github/error'}),
     function (req, res) {
-        res.redirect('/auth/success');
+        res.redirect('/auth/github/success');
     }
 );
 authRouter.get('/success', async (req: Request, res: Response) => {
