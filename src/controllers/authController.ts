@@ -29,7 +29,7 @@ const oAuthCallback = async (req: { query: { code: string } }, res: Response): P
     const response = await axios.post('https://github.com/login/oauth/access_token', body, opts);
     const token = response.data.access_token;
     console.log(`My Token: ${token}`);
-    res.redirect('/token=' + token);
+    res.redirect('/?token=' + token);
   } catch (err) {
     res.status(500).json({ err: err.message });
   }
