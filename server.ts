@@ -4,7 +4,7 @@ import express, { Request, Response, NextFunction } from 'express';
 const app = express();
 
 import session from 'express-session';
-// import passport from 'passport';
+import passport from 'passport';
 
 import path from 'path';
 import dotenv from 'dotenv';
@@ -32,7 +32,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-// app.use(passport.session());
+app.use(passport.session());
 
 app.use(function handleValidationError(err: any, req: Request, res: Response, next: NextFunction) {
   if (err instanceof ValidationError) {
