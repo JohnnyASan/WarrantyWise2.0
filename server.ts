@@ -1,14 +1,23 @@
 
-require('express-async-errors');
 import connectDB from './src/database/mongooseClient';
 import express, { Request, Response, NextFunction } from 'express';
+const app = express();
+
+import session from 'express-session';
+// import passport from 'passport';
+
 import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config();
+
+require('express-async-errors');
 import ValidationError from './src/errors/validationError';
 import NotFoundError from './src/errors/notFoundError'; 
 import MongoError from './src/errors/mongoError'; 
 import HttpStatus from 'http-status-codes';
 import routes from './src/routes';
-const app = express();
+
+
 
 
 connectDB();
@@ -18,6 +27,12 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.json());
 app.use('/', routes);
+app.use(session({
+  secret: process.env.SESSION_SECRET_KEY ?? '',
+  resave: false,
+  saveUninitialized: true
+}));
+// app.use(passport.session());
 
 app.use(function handleValidationError(err: any, req: Request, res: Response, next: NextFunction) {
   if (err instanceof ValidationError) {
@@ -63,7 +78,7 @@ app.use(function (error: any, req: Request, res: Response, next: NextFunction) {
   }
 });
 
-export default app;
+
 
 
 app.listen(port, (): void => {

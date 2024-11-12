@@ -10,6 +10,6 @@ router.use('/api-docs', swaggerUi.serve);
 router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 router.use('/warranties', warrantiesRouter);
-router.use('/', authRouter);
+router.use('/auth', authRouter);
 
 export default router;
