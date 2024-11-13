@@ -55,7 +55,7 @@ GET https://warrantywise.onrender.com/warranties HTTP/1.1
 
 ### Get By ID
 
-GET https://warrantywise.onrender.com/warranties/671d6a1de2bf4e63d7f1ef33 HTTP/1.1
+GET https://warrantywise.onrender.com/warranties/67340f0eef3495ea587eab30 HTTP/1.1
 
 ### Create warranty
 POST https://warrantywise.onrender.com/warranties HTTP/1.1
@@ -63,14 +63,14 @@ content-type: application/json
 
 {
     "modelNumber": "123MODEL",
-    "purchaseDate": "2024/10/19546",
+    "purchaseDate": "2024/10/19",
     "expiration": "2025/10/19",
     "company": "WarrantyWise",
     "details": "Full coverage for any reason",
     "email": "john.doe@email.com",
-    "phone": "1234567890",
-    "githubId": "1",
-    "linkToFileClaim": "file.claim.com$#!%!#%"
+    "phone": "12345678901",
+    "githubId": "43801242",
+    "linkToFileClaim": "file.claim.com"
 }
 ### Update warranty
 PUT https://warrantywise.onrender.com/warranties/671d6a1de2bf4e63d7f1ef33 HTTP/1.1
