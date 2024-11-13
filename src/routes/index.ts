@@ -2,7 +2,7 @@ import express, { Router } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../docs/swagger-output.json';
 import warrantiesRouter from './warranties';
-import authRouter from './auth';
+import { authRouter } from './auth';
 
 const router: Router = express.Router();
 
