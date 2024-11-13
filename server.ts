@@ -121,9 +121,6 @@ app.use(function (error: any, req: Request, res: Response, next: NextFunction) {
   }
 });
 
-
-
-
 app.listen(port, (): void => {
   console.log(`Server listening at http://localhost:${port}`);
 });
