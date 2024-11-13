@@ -6,28 +6,7 @@ const doc = {
     description: 'Api used for saving, updated, reading, and deleting warranties.'
   },
   host: 'warrantywise.onrender.com',
-  schemes: ['https'],
-  securityDefinitions: {
-    Bearer: {
-      type: 'apiKey',
-      name: 'Authorization',
-      in: 'header',
-      description: 'Enter the token with the `Bearer: ` prefix, e.g. "Bearer abcde12345".'
-    }
-  },
-  paths: {
-    "/": {
-      get: {
-        security: {
-          Bearer: []
-        },
-        responses: {
-          '200': "Will send 'Authenticated'",
-          '403': "You do not have the necessary permissions for the resource"
-        }
-      }
-    }
-  }
+  schemes: ['https']
 };
 
 const outputFile = './swagger-output.json';
