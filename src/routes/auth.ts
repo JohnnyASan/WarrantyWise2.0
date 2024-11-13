@@ -6,6 +6,7 @@ import eSeshD from '../types/express-session';
 import User from '../models/user';
 import session from 'express-session';
 import { Strategy as GitHubStrategy } from 'passport-github2';
+import { randomUUID } from 'crypto';
 
 const authApp = express();
 const authRouter = express.Router();
@@ -35,7 +36,7 @@ passport.use(new GitHubStrategy({
               username: profile._json.login,
               profileImage: profile._json.avatar_url,
               githubId: profile.id,
-              githubToken: accessToken,
+              sessionToken: randomUUID(),
               createdAt: Date.now(),
               updatedAt: Date.now()
           });

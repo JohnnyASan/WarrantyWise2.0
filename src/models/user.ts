@@ -4,7 +4,7 @@ interface IUser extends Document {
     username: string;
     profileImage: string;
     githubId: string;
-    githubToken: string;
+    sessionToken: string;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -24,7 +24,7 @@ const userSchema = new Schema<IUser>({
         required: true,
         unique: true
     },
-    githubToken: {
+    sessionToken: {
         type: String,
         required: true
     },
