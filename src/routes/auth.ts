@@ -51,10 +51,10 @@ passport.use(new GitHubStrategy({
 ));
 
 // Configure Passport authenticated session persistence 
-passport.serializeUser((user: any, done) => { done(null, user.id); }); 
+passport.serializeUser((user: any, done) => { done(null, {githubId: user.id}); }); 
 passport.deserializeUser(async (id: string, done) => {
    try { 
-      const user = await User.findById(id);
+      const user = await User.findById({githubId: id});
        done(null, user); 
       } catch (err) {
            done(err);
