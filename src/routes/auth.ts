@@ -60,7 +60,7 @@ passport.deserializeUser(async (id: string, done) => {
    try { 
     console.log("Passport DESERIALIZE id: ");
     console.log(id);
-      const user = await User.findById({githubId: id});
+      const user = await User.findOne({githubId: id});
        done(null, user); 
       } catch (err) {
            done(err);
