@@ -83,8 +83,13 @@ const getAllWarranties = async () => {
 };
 
 const getWarrantyById = async (id: string) => {
-    const warranty = await Warranty.find({ _id: id });
+    const warranty = await Warranty.findOne({ _id: id });
     return warranty;
+}
+
+const getWarrantyiesByGithubId = async (githubId: string) => {
+    const warranties = await Warranty.find({ githubId: githubId });
+    return warranties;
 }
 
 const deleteWarrantyById = async (id: string) => {
@@ -97,5 +102,6 @@ export {
     updateWarrantyById,
     getAllWarranties,
     getWarrantyById,
-    deleteWarrantyById
+    deleteWarrantyById,
+    getWarrantyiesByGithubId
 }

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createNewWarranty, updateWarrantyById, deleteWarrantyById, getAllWarranties, getWarrantyById } from '../services/warrantyService';
+import { createNewWarranty, updateWarrantyById, deleteWarrantyById, getAllWarranties, getWarrantyById, getWarrantyiesByGithubId } from '../services/warrantyService';
 
 const getAll = async (req: Request, res: Response): Promise<void> => {
     // #swagger.summary = 'Get All Warranties'
@@ -20,9 +20,8 @@ const getAllByUserId = async (req: Request, res: Response): Promise<void> => {
     // #swagger.description = 'Gets all warranties in the collection for a user. This endpoint is NOT paginated.'
     // #swagger.tags = ['Warranties']
     try {
-        const access_token: string = req.params.access_token;
-        const user_id: string = req.params.userId;
-        const result = await getWarrantyById(user_id);
+        const githubUserId = req.session.passport?.user.id;
+        const result = await getWarrantyiesByGithubId(githubUserId);
         res.status(200).json(result);
         
     }
@@ -40,6 +39,8 @@ const getById = async (req: Request, res: Response): Promise<void> => {
     try {
         const id: string = req.params.id;
         const result = await getWarrantyById(id);
+        const githubUserId = req.session.passport?.user.id;
+        if (result?.githubId != githubUserId) res.status(401).send("Cannot access this resource.");
         res.status(200).json(result);
     }
     catch {
